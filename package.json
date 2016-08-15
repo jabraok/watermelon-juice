@@ -19,9 +19,10 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "6.1.2",
     "broccoli-asset-rev": "^2.4.2",
     "ember-ajax": "0.7.1",
-    "ember-cli": "^2.4.3",
+    "ember-cli": "^2.7.0",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-content-security-policy": "0.5.0",
@@ -55,5 +56,8 @@
     "ember-truth-helpers": "1.2.0",
     "eslint-config-ember": "0.3.0",
     "loader.js": "^4.0.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^6.1.2"
   }
 }
