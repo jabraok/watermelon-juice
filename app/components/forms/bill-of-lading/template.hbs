@@ -1,32 +1,27 @@
-<div class='header'>
-  <span class='title row stretch'>Invoice</span>
-  <div class='col info'>
+<div class="header">
+  <span class="title row stretch">Invoice</span>
+  <div class="col info">
     <div class="col">
-      <span class='row stretch infoRow'>
-        <span class="label">Invoice #</span>
-        <span class="content">{{model.orderNumber}}</span>
+      <span class="row stretch infoRow">
+        <span class="content orderNumber">{{model.orderNumber}}</span>
       </span>
-      <span class='row stretch infoRow'>
-        <span class="label">Delivery Date:</span>
+      <span class="row stretch infoRow">
         <span class="content">{{date}}</span>
       </span>
-      <span class='row stretch infoRow'>
-        <span class="label">Customer #:</span>
+      <span class="row stretch infoRow">
         <span class="content">{{model.location.company.name}}</span>
       </span>
     </div>
   </div>
 </div>
 
-<div class='rowContainer'>
+<div class="rowContainer">
   {{#each validOrderitems as |orderItem|}}
     {{rows/bill-of-lading-row
-        name=orderItem.item.name
-        quantity=orderItem.quantity}}
+        model=orderItem}}
   {{/each}}
 
   {{rows/bill-of-lading-row
-      name='Total'
-      emphasize=true
-      quantity=totalQuantity}}
+      model=total
+      emphasize=true}}
 </div>
