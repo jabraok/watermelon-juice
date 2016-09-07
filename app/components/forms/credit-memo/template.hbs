@@ -17,15 +17,13 @@
 
 <div class="rowContainer">
   {{#each validCreditNoteItems as |cni|}}
-    {{rows/credit-note-row
+    {{rows/cost-quantity-row
         name=cni.item.name
         unitPrice=cni.unitPrice
-        quantity=cni.quantity
-        total=cni.total}}
+        quantity=cni.quantity}}
   {{/each}}
 
-  {{rows/credit-note-row
+  {{rows/cost-quantity-total-row
       name="Total"
-      total=total
-      class="total"}}
+      total=total}}
 </div>

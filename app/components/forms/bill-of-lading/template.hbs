@@ -17,15 +17,13 @@
 
 <div class="rowContainer">
   {{#each validOrderitems as |orderItem|}}
-    {{rows/bill-of-lading-row
+    {{rows/cost-quantity-row
         name=orderItem.item.name
         unitPrice=orderItem.unitPrice
-        quantity=orderItem.quantity
-        total=orderItem.total}}
+        quantity=orderItem.quantity}}
   {{/each}}
 
-  {{rows/bill-of-lading-row
+  {{rows/cost-quantity-total-row
       name="Total"
-      total=total
-      class="total"}}
+      total=total}}
 </div>
