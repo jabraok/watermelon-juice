@@ -13,9 +13,7 @@ export default Ember.Component.extend({
 
   @computed("validOrderitems.@each.{total}")
   total(orderItems) {
-    const total = orderItems.reduce((acc, cur) => acc + cur.get("total"), 0);
-
-    return {name: "Total", total};
+    return orderItems.reduce((acc, cur) => acc + cur.get("total"), 0);
   },
 
   @computed("model.deliveryDate")

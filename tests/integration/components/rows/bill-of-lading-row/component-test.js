@@ -1,28 +1,29 @@
 import { moduleForComponent, test } from "ember-qunit";
 import hbs from "htmlbars-inline-precompile";
-import {
-  make,
-  manualSetup
-} from "ember-data-factory-guy";
 import { currency } from 'watermelon-juice/helpers/currency';
 
 moduleForComponent("rows/bill-of-lading-row", "Integration | Component | rows/bill of lading row", {
-  integration: true,
-
-  beforeEach: function () {
-   manualSetup(this.container);
- }
+  integration: true
 });
 
-test("it shows order item information when present", function(assert) {
-  const orderItem = make("order-item");
+test("it shows information when present", function(assert) {
+  const name = "item name",
+        quantity = 20,
+        unitPrice = 10,
+        total = quantity * unitPrice;
 
-  this.set("orderItem", orderItem);
+  this.set("name", name);
+  this.set("quantity", quantity);
+  this.set("unitPrice", unitPrice);
+  this.set("total", total);
   this.render(hbs`{{rows/bill-of-lading-row
-                    model=orderItem}}`);
+                    name=name
+                    quantity=quantity
+                    unitPrice=unitPrice
+                    total=total}}`);
 
-  assert.equal($(".name").text(), orderItem.get("name"));
-  assert.equal($(".unitPrice").text(), currency([orderItem.get("unitPrice")]));
-  assert.equal($(".quantity").text(), orderItem.get("quantity"));
-  assert.equal($(".total").text(), currency([orderItem.get("total")]));
+  assert.equal($(".name").text(), name);
+  assert.equal($(".unitPrice").text(), currency([unitPrice]));
+  assert.equal($(".quantity").text(), quantity);
+  assert.equal($(".total").text(), currency([total]));
 });

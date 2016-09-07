@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   classNameBindings:  ["shouldDisplay::hidden"],
 
   validCreditNoteItems: filterBy("model.creditNoteItems", "hasCredit", true),
-  shouldDisplay:        gt("total.total", 0),
+  shouldDisplay:        gt("total", 0),
 
   @computed("model.date")
   date(date) {
@@ -21,9 +21,7 @@ export default Ember.Component.extend({
 
   @computed("validCreditNoteItems.@each.{total}")
   total(creditNoteItems) {
-    const total = creditNoteItems.reduce((acc, cur) => acc + cur.get("total"), 0);
-
-    return {name: "Total", total};
+    return creditNoteItems.reduce((acc, cur) => acc + cur.get("total"), 0);
   }
 
 });

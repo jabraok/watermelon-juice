@@ -18,10 +18,14 @@
 <div class="rowContainer">
   {{#each validOrderitems as |orderItem|}}
     {{rows/bill-of-lading-row
-        model=orderItem}}
+        name=orderItem.item.name
+        unitPrice=orderItem.unitPrice
+        quantity=orderItem.quantity
+        total=orderItem.total}}
   {{/each}}
 
   {{rows/bill-of-lading-row
-      model=total
-      emphasize=true}}
+      name="Total"
+      total=total
+      class="total"}}
 </div>

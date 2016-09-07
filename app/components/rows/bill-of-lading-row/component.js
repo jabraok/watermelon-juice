@@ -3,7 +3,6 @@ const { notEmpty } = Ember.computed;
 
 export default Ember.Component.extend({
   classNames: ["row", "stretch"],
-  classNameBindings: ["emphasize"],
 
-  hasQuantity: notEmpty("model.quantity")
+  hasQuantity: notEmpty("quantity")
 });
