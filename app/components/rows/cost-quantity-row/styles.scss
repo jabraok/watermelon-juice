@@ -1,0 +1,17 @@
+& {
+  justify-content: space-between;
+  padding: 0.3em 0.5em;
+}
+
+&:nth-child(odd) {
+  background-color: #DEF6F9;
+}
+
+.currency {
+  font-weight: 600;
+}
+
+.quantityContainer {
+  padding-left: 0.5em;
+  font-size: 0.9em;
+}
