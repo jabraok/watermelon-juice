@@ -4,7 +4,7 @@ import computed from "ember-computed-decorators";
 export default Ember.Component.extend({
   classNames: ["row", "stretch"],
 
-  @computed("quantity,unitPrice")
+  @computed("quantity", "unitPrice")
   total(quantity, unitPrice) {
     return quantity * unitPrice;
   }
