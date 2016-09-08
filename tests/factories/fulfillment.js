@@ -8,10 +8,6 @@ FactoryGuy.define("fulfillment", {
   traits: {
     withRouteVisit: {
       routeVisit: FactoryGuy.belongsTo("route-visit")
-    },
-    
-    withRouteVisitAndRoutePlan: {
-      routeVisit: FactoryGuy.belongsTo("route-visit")
     }
   }
 });
