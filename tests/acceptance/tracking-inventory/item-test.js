@@ -66,3 +66,10 @@ test("navigates to tracking index when clicked on Mark Tracked button", async fu
   const trackingIndexUrl = `${this.fulfilmentUrl}/tracking`;
   assert.equal(currentURL(), trackingIndexUrl);
 });
+
+test("navigates back to tracking index", async function(assert) {
+  await applicationPage.goBack();
+
+  const trackingIndexUrl = `${this.fulfilmentUrl}/tracking`;
+  assert.equal(currentURL(), trackingIndexUrl);
+});

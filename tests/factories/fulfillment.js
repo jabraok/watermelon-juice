@@ -21,6 +21,6 @@ FactoryGuy.define("fulfillment", {
     withOrderAndCreditNote: {
       order: FactoryGuy.belongsTo("order", "salesOrder"),
       creditNote: FactoryGuy.belongsTo("credit-note")
-    },
+    }
   }
 });
