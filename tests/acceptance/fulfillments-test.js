@@ -59,7 +59,7 @@ test("should navigate back to fulfillment list when parent route visit has multi
   assert.equal(currentURL(), urlToMatch);
 });
 
-test("displays Track Inventory button in case fulfillment of an sales order", async function(assert) {
+test("displays track inventory button if fulfillment is a sales order", async function(assert) {
   const routePlan = make("route-plan");
   const fulfillments = makeList("fulfillment", 2, "withOrder");
   const fulfillment = fulfillments[0];
@@ -78,7 +78,7 @@ test("displays Track Inventory button in case fulfillment of an sales order", as
   assert.ok(showPage.trackInventoryIsVisible)
 });
 
-test("hides Track Inventory button in case fulfillment of an purchase order", async function(assert) {
+test("hides track inventory button if fulfillment is a purchase order", async function(assert) {
   const routePlan = make("route-plan");
   const fulfillments = makeList("fulfillment", 2, "withPurchaseOrder");
   const fulfillment = fulfillments[0];
