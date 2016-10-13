@@ -2,6 +2,9 @@ import Model from "ember-data/model";
 import attr from "ember-data/attr";
 import { hasMany } from "ember-data/relationships";
 import computed from "ember-computed-decorators";
+import Ember from "ember";
+
+const { notEmpty } = Ember.computed;
 
 export default Model.extend({
   date:               attr("string"),
@@ -12,6 +15,7 @@ export default Model.extend({
   pickUpCount:        attr("number"),
 
   routeVisits:        hasMany("route-visit"),
+  hasRouteVisits:     notEmpty("routeVisits"),
 
   @computed("date")
   formattedDate(date) {

@@ -18,16 +18,19 @@ moduleForAcceptance("Acceptance | route plans", {
   }
 });
 
-test("can view recent route plans", async function(assert) {
-  mockFindAll("route-plan", 3);
+test("can view recent route plans which already has many route visits", async function(assert) {
+  const routePlans = makeList("route-plan", 2);
+  makeList("route-visit", 1, { routePlan: routePlans.get("firstObject") });
+
+  mockFindAll("route-plan").returns({ models: routePlans });
 
   await indexPage.visit();
-
-  assert.equal(indexPage.routePlans().count, 3);
+  assert.equal(indexPage.routePlans().count, 1);
 });
 
 test("can select a route plan", async function(assert) {
   const routePlan = make("route-plan");
+  makeList("route-visit", 1, { routePlan });
 
   mockFind("route-plan").returns({model: routePlan});
   mockFindAll("route-plan").returns({models: [routePlan]});
