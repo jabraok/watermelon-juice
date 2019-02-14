@@ -10,7 +10,7 @@ Used by the road team to manage orders and inventory on the road..
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
+* [Node.js](https://nodejs.org/) (with YARN)
 * [Bower](https://bower.io/)
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
@@ -19,7 +19,7 @@ You will need the following things properly installed on your computer.
 
 * `git clone <repository-url>` this repository
 * change into the new directory
-* `npm install`
+* `yarn install`
 * `bower install`
 
 [travis-badge-master]: https://travis-ci.org/mlvk/watermelon-juice.svg?branch=master
