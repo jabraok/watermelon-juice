@@ -2,7 +2,7 @@ import Model from "ember-data/model";
 import Ember from "ember";
 import attr from "ember-data/attr";
 import { belongsTo, hasMany } from "ember-data/relationships";
-import computed from "ember-computed-decorators";
+import { computed } from 'ember-decorators/object';
 
 export default Model.extend({
   takenAt:      attr("date"),

@@ -1,7 +1,7 @@
 import Ember from "ember";
 import Model from "ember-data/model";
 import attr from "ember-data/attr";
-import computed from 'ember-computed-decorators';
+import { computed } from 'ember-decorators/object';
 import { belongsTo } from "ember-data/relationships";
 
 const {
