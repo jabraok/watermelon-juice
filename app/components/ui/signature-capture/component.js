@@ -12,9 +12,9 @@ export default Component.extend({
     this.set("isEditing", false);
   },
 
-  didReceiveAttrs(data) {
-    this.set("stashedSignature", data.newAttrs.signature.value);
-    this.set("stashedName", data.newAttrs.name.value);
+  didReceiveAttrs() {
+    this.set("stashedSignature", this.get('signature'));
+    this.set("stashedName", this.get('name') );
   },
 
   actions: {

@@ -13,10 +13,15 @@ export default Component.extend({
       .subscribe(() => this.prepareCanvas());
   },
 
-  didReceiveAttrs(data) {
-    if(this.get("signature") !== data.newAttrs.signature.value) {
+  didReceiveAttrs() {
+    let oldSignature = this.get('_previousSignature');
+    let newSignature = this.get('signature');
+
+    if(oldSignature && oldSignature !== newSignature) {
       this.prepareCanvas();
     }
+
+    this.set('_previousSignature', newSignature);
   },
 
   willDestroyElement() {
