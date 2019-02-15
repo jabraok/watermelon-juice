@@ -1,14 +1,9 @@
-import Ember from "ember";
+import { gt, alias } from '@ember/object/computed';
 import Model from "ember-data/model";
 import attr from "ember-data/attr";
 import { belongsTo } from "ember-data/relationships";
 import { computed } from 'ember-decorators/object';
 import { round } from 'watermelon-juice/utils/math';
-
-const {
-  alias,
-  gt
-} = Ember.computed;
 
 export default Model.extend({
   quantity:     attr("number", {defaultValue: 0}),

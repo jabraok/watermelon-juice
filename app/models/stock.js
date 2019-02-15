@@ -1,5 +1,5 @@
+import { isPresent, isNone } from '@ember/utils';
 import Model from "ember-data/model";
-import Ember from "ember";
 import attr from "ember-data/attr";
 import { belongsTo, hasMany } from "ember-data/relationships";
 import { computed } from 'ember-decorators/object';
@@ -27,7 +27,7 @@ export default Model.extend({
     return stockLevels
       .filter(sl => {
         const match = itemDesires.find(itemDesire => itemDesire.get("item.id") === sl.get("item.id"));
-        return Ember.isPresent(match);
+        return isPresent(match);
       });
   },
 
@@ -36,7 +36,7 @@ export default Model.extend({
     return stockLevels
       .filter(sl => {
         const match = desiredItemStockLevels.find(desiredItemStockLevel => desiredItemStockLevel.get("item.id") === sl.get("item.id"));
-        return Ember.isNone(match);
+        return isNone(match);
       });
   }
 

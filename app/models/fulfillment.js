@@ -1,14 +1,8 @@
-import Ember from "ember";
+import { alias, not, equal } from '@ember/object/computed';
 import Model from "ember-data/model";
 import attr from "ember-data/attr";
 import { computed } from 'ember-decorators/object';
 import { belongsTo } from "ember-data/relationships";
-
-const {
-  equal,
-  not,
-  alias
-} = Ember.computed;
 
 export default Model.extend({
   deliveryState:          attr("string"),

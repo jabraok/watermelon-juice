@@ -1,10 +1,8 @@
-import Ember from 'ember';
+import { equal } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
-
-const { equal } = Ember.computed;
 
 const SALES_ORDER = 'sales-order';
 const PURCHASE_ORDER = 'purchase-order';

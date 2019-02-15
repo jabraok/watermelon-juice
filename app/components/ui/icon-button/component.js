@@ -1,15 +1,10 @@
-import Ember from "ember";
-import style from "watermelon-juice/utils/styles";
+import Component from '@ember/component';
+import { notEmpty } from '@ember/object/computed';
+import { style } from "watermelon-juice/utils/styles";
 import colors from "watermelon-juice/constants/colors";
 import Clickable from "watermelon-juice/mixins/clickable";
 
-const {
-  computed: {
-    notEmpty
-  }
-} = Ember;
-
-export default Ember.Component.extend(Clickable, {
+export default Component.extend(Clickable, {
   tagName: "a",
 
   classNames: ["row"],

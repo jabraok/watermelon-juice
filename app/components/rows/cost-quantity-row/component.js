@@ -1,11 +1,8 @@
-import Ember from "ember";
+import Component from '@ember/component';
+import { set } from '@ember/object';
 import { computed } from 'ember-decorators/object';
 
-const {
-  set
-} = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ["row", "stretch", "center"],
 
   @computed("quantity", "unitPrice")

@@ -1,11 +1,7 @@
-import Ember from "ember";
+import Component from '@ember/component';
+import { notEmpty, and } from '@ember/object/computed';
 
-const {
-  and,
-  notEmpty
-} = Ember.computed;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames:     ["card-2"],
 
   hasName:        notEmpty("stashedName"),

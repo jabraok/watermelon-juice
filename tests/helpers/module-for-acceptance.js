@@ -1,5 +1,6 @@
+import EmberObject from '@ember/object';
 import { module } from 'qunit';
-import { resolve } from 'rsvp';
+import { resolve, Promise } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import {
@@ -8,9 +9,7 @@ import {
   mockFindAll
 } from 'ember-data-factory-guy';
 
-const { RSVP: { Promise } } = Ember;
-
-const MockRemoteSync = Ember.Object.extend({
+const MockRemoteSync = EmberObject.extend({
   start(){},
   loadFromLS(){},
   enqueue(){}

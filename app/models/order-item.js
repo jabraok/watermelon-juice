@@ -1,13 +1,8 @@
-import Ember from "ember";
+import { lt, alias } from '@ember/object/computed';
 import Model from "ember-data/model";
 import attr from "ember-data/attr";
 import { belongsTo } from "ember-data/relationships";
 import { computed } from 'ember-decorators/object';
-
-const {
-  alias,
-  lt
-} = Ember.computed;
 
 export default Model.extend({
   quantity:   attr("number", { defaultValue: 0 }),

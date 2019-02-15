@@ -1,10 +1,12 @@
-import Ember from 'ember';
+import { isPresent } from '@ember/utils';
+import { scheduleOnce } from '@ember/runloop';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['relative'],
 
   didInsertElement() {
-    Ember.run.scheduleOnce('afterRender', this, this.afterRenderHandler);
+    scheduleOnce('afterRender', this, this.afterRenderHandler);
 
     this.resizeSubcription = Rx.Observable.fromEvent(window, 'resize')
       .throttle(250)
@@ -19,13 +21,13 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     this.resizeSubcription.dispose();
-    if(Ember.isPresent(this.signaturePad)){
+    if(isPresent(this.signaturePad)){
       this.signaturePad.off();
     }
   },
 
   clearCanvas() {
-    if(Ember.isPresent(this.$canvas)) {
+    if(isPresent(this.$canvas)) {
       const ratio =  Math.max(window.devicePixelRatio || 1, 1);
       this.$canvas.width = this.$canvas.offsetWidth * ratio;
       this.$canvas.height = this.$canvas.offsetHeight * ratio;
@@ -34,7 +36,7 @@ export default Ember.Component.extend({
   },
 
   drawSignature() {
-    if(Ember.isPresent(this.get("signature")) && Ember.isPresent(this.signaturePad)){
+    if(isPresent(this.get("signature")) && isPresent(this.signaturePad)){
       this.signaturePad.fromDataURL(this.get("signature"));
     }
   },

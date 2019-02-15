@@ -1,12 +1,9 @@
-import Ember from "ember";
+import Component from '@ember/component';
+import { gt } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
 import moment from "moment";
 
-const {
-  gt
-} = Ember.computed;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ["col", "stretch", "card-1"],
   isEditing: false,
 

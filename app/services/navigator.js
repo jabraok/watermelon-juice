@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { later } from '@ember/runloop';
+import { isNone } from '@ember/utils';
+import Service, { inject as service } from '@ember/service';
+import { notEmpty } from '@ember/object/computed';
 
-const {
-  notEmpty
-} = Ember.computed;
-
-export default Ember.Service.extend({
-  routing: Ember.inject.service('-routing'),
+export default Service.extend({
+  routing: service('-routing'),
   scrollQueue: [],
   scrollYMap: {},
   hasRoute: notEmpty('scrollQueue'),
@@ -40,7 +39,7 @@ export default Ember.Service.extend({
 
   goBack() {
     const last = this.get("scrollQueue.lastObject");
-    if(!Ember.isNone(last)){
+    if(!isNone(last)){
       this.get('routing').transitionTo(last);
     }
   },
@@ -60,7 +59,7 @@ export default Ember.Service.extend({
     const shouldScrollTo = this.hasStashedRoute(key);
 
     if(shouldScrollTo){
-      Ember.run.later('afterRender', () => window.scrollTo(0, this.scrollYMap[key]));
+      later('afterRender', () => window.scrollTo(0, this.scrollYMap[key]));
       this.clearRight(key);
     }
   }
