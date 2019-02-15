@@ -23,8 +23,8 @@ module.exports = function(environment) {
       touchActionProperties: 'touch-action: manipulation; -ms-touch-action: manipulation; cursor: pointer;'
     },
 
-    apiHost:process.env.API_HOST,
-    logEntriesKey:process.env.LOG_ENTRIES_KEY
+    apiHost: process.env.API_HOST,
+    logEntriesKey: process.env.LOG_ENTRIES_KEY
   };
 
   ENV.contentSecurityPolicy = {
