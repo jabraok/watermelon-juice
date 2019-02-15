@@ -5,7 +5,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   remoteSync: Ember.inject.service('remote-sync'),
 
   activate() {
-    this.get('remoteSync').start();
+    // this.get('remoteSync').start();
   }
 
 });
