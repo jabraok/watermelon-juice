@@ -46,8 +46,8 @@ export default Ember.Service.extend({
   },
 
   addListener() {
-    this.get('routing.router').on('willTransition', ::this.handleWillTransition);
-    this.get('routing.router').on('didTransition', ::this.handleDidTransition);
+    this.get('routing.router').on('willTransition', this.handleWillTransition.bind(this));
+    this.get('routing.router').on('didTransition', this.handleDidTransition.bind(this));
   },
 
   handleWillTransition() {

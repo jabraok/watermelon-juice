@@ -46,7 +46,7 @@ export default Ember.Component.extend({
 
   afterRenderHandler : function(){
     this.$canvas = this.$('canvas')[0];
-    this.signaturePad = new SignaturePad(this.$canvas, {onEnd: ::this.onEndHandler});
+    this.signaturePad = new SignaturePad(this.$canvas, {onEnd: this.onEndHandler.bind(this)});
     this.prepareCanvas();
 	},
 

@@ -12,7 +12,7 @@ export default Ember.Service.extend({
   allSynced: empty("remainingKeys"),
 
   start() {
-    setInterval(::this.processQueue, 5000);
+    setInterval(this.processQueue.bind(this), 5000);
   },
 
   async loadFromLS(){
@@ -79,7 +79,7 @@ export default Ember.Service.extend({
 
   async serializeForApi(routeVisit) {
     const fulfillments = await routeVisit.get("fulfillments");
-    const fulfillmentsData = await Promise.all(fulfillments.map(::this.serializeFulfillment));
+    const fulfillmentsData = await Promise.all(fulfillments.map(this.serializeFulfillment.bind(this)));
 
     return {
       id: routeVisit.get("id"),
@@ -107,7 +107,7 @@ export default Ember.Service.extend({
     if(Ember.isPresent(children)){
       return {
         id: model.get("id"),
-        order_items: children.map(::this.serializeOrderItem)
+        order_items: children.map(this.serializeOrderItem.bind(this))
       }
     } else {
       return undefined;
@@ -121,7 +121,7 @@ export default Ember.Service.extend({
     if(Ember.isPresent(children)){
       return {
         id: model.get("id"),
-        credit_note_items: children.map(::this.serializeCreditNoteItem)
+        credit_note_items: children.map(this.serializeCreditNoteItem.bind(this))
       }
     } else {
       return undefined;
@@ -135,7 +135,7 @@ export default Ember.Service.extend({
     if(Ember.isPresent(children)){
       return {
         id: model.get("id"),
-        stock_levels: children.map(::this.serializeStockLevel)
+        stock_levels: children.map(this.serializeStockLevel.bind(this))
       }
     } else {
       return undefined;
