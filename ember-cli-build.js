@@ -4,12 +4,15 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    sassOptions: {implementation: require("node-sass")},
     babel: {
-      optional: ['es7.decorators', 'es7.functionBind'],
-      includePolyfill: true
+      optional: ['es7.decorators', 'es7.functionBind']
     },
     'ember-cli-qunit': {
       useLintTree: false
+    },
+    'ember-cli-babel': {
+      includePolyfill: true
     }
   });
 
