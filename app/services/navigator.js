@@ -5,6 +5,7 @@ import { notEmpty } from '@ember/object/computed';
 
 export default Service.extend({
   routing: service('-routing'),
+  router: service(),
   scrollQueue: [],
   scrollYMap: {},
   hasRoute: notEmpty('scrollQueue'),
@@ -40,7 +41,7 @@ export default Service.extend({
   goBack() {
     const last = this.get("scrollQueue.lastObject");
     if(!isNone(last)){
-      this.get('routing').transitionTo(last);
+      this.get('router').transitionTo(last);
     }
   },
 
@@ -50,12 +51,12 @@ export default Service.extend({
   },
 
   handleWillTransition() {
-    const key = this.get('routing.currentRouteName');
+    const key = this.get('currentRouteName');
     this.scrollYMap[key] = window.scrollY;
   },
 
   handleDidTransition() {
-    const key = this.get('routing.currentRouteName');
+    const key = this.get('currentRouteName');
     const shouldScrollTo = this.hasStashedRoute(key);
 
     if(shouldScrollTo){
