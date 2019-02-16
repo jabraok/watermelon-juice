@@ -22,10 +22,6 @@ export default function(name, options = {}) {
 
       mockSetup();
 
-      // Enable for mockjax logging
-      // $.mockjaxSettings.logging = true;
-      // $.mockjaxSettings.logging = 4;
-
       this.application.register('service:test-remote-sync', MockRemoteSync);
       this.application.inject('route', 'remoteSync', 'service:test-remote-sync');
       this.application.inject('controller', 'remoteSync', 'service:test-remote-sync');

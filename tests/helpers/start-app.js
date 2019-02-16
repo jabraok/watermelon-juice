@@ -8,9 +8,6 @@ export default function startApp(attrs) {
 let attributes = merge({}, config.APP);
 attributes.autoboot = true;
 attributes = merge(attributes, attrs); // use defaults, but you can override;
-
-  $.mockjaxSettings.logging = true;
-
   // Mock the log entried library to prevent testing errors.
   LE = {init:()=>{}, error:()=>{}, log:()=>{}, warn:()=>{}};
 
