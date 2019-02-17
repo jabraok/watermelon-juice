@@ -1,9 +1,9 @@
 import Controller from '@ember/controller';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
-  @computed("model.stock.stockLevels.@each.{tracked}")
-  trackingCompleted(stockLevels) {
+  trackingCompleted: computed("model.stock.stockLevels.@each.{tracked}", function() {
+    const stockLevels = this.get("model.stock.stockLevels");
     return stockLevels.every(sl => sl.get("tracked"));
-  }
+  })
 });

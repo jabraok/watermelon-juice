@@ -1,5 +1,5 @@
 import { equal } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
@@ -23,8 +23,8 @@ export default Model.extend({
   isSalesOrder:       equal('orderType', SALES_ORDER),
   isPurchaseOrder:    equal('orderType', PURCHASE_ORDER),
 
-  @computed('orderItems.@each.{quantity}')
-  empty(orderItems) {
+  empty: computed('orderItems.@each.{quantity}', function() {
+    const orderItems = this.get("orderItems");
     return orderItems.every(so => so.get('empty'));
-  }
+  })
 });

@@ -1,7 +1,7 @@
 import { alias, not, equal } from '@ember/object/computed';
 import Model from "ember-data/model";
 import attr from "ember-data/attr";
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import { belongsTo } from "ember-data/relationships";
 
 export default Model.extend({
@@ -24,8 +24,10 @@ export default Model.extend({
 
   hasSignature:           alias("pod.isValid"),
 
-  @computed('pod.isValid', 'stock.tracked', 'order.isPurchaseOrder')
-  isSubmissible(isPodValid, isStockTracked, isPurchaseOrder) {
+  isSubmissible: computed('pod.isValid', 'stock.tracked', 'order.isPurchaseOrder', function() {
+    const isPodValid = this.get("pod.isValid");
+    const isStockTracked = this.get("stock.tracked");
+    const isPurchaseOrder = this.get("order.isPurchaseOrder");
     return (isPodValid && isStockTracked) || (isPurchaseOrder && isPodValid);
-  }
+  })
 });

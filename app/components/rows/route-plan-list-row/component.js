@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { equal } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import moment from 'moment';
 import Clickable from 'watermelon-juice/mixins/clickable';
 
@@ -9,8 +9,8 @@ export default Component.extend(Clickable, {
 
   isToday: equal('date', moment().format('dddd - MMM Do')),
 
-  @computed('model.{date}')
-  date(date) {
+  date: computed('model.{date}', function() {
+    const date = this.get("model.date");
     return moment(date, 'YYYY-MM-DD').format('dddd - MMM Do');
-  }
+  })
 });

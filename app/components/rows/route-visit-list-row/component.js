@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { alias, bool } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import Clickable from "watermelon-juice/mixins/clickable";
 
 export default Component.extend(Clickable, {
@@ -13,8 +13,10 @@ export default Component.extend(Clickable, {
   address:            alias("model.address.full"),
   completed:          bool("model.fulfilled"),
 
-  @computed("model.hasMultipleFulfillments", "firstLocation.code", "firstLocation.address.city")
-  locationText(hasMultiple = false, locationCode = "", city = "") {
+  locationText: computed("model.hasMultipleFulfillments", "firstLocation.{code,address.city}", function() {
+    const hasMultiple = this.get("model.hasMultipleFulfillments") || false;
+    const locationCode = this.get("firstLocation.code") || "";
+    const city = this.get("firstLocation.address.city") || "";
     return hasMultiple ? `Multiple - ${city}` : `${locationCode.toUpperCase()} - ${city}`;
-  }
+  })
 });

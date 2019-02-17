@@ -1,5 +1,5 @@
 import { not, equal, gt, alias } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
@@ -27,18 +27,18 @@ export default Model.extend({
 
   defaultFulfillment: alias('fulfillments.firstObject'),
 
-  @computed('fulfillments.@each.{belongsToPurchaseOrder}')
-  hasPickups(fulfillments) {
+  hasPickups: computed('fulfillments.@each.{belongsToPurchaseOrder}', function() {
+    const fulfillments = this.get("fulfillments");
     return fulfillments.any(f => f.get("belongsToPurchaseOrder"));
-  },
+  }),
 
-  @computed('position')
-  positionFormatted(position) {
+  positionFormatted: computed('position', function() {
+    const position = this.get("position");
     return position + 1;
-  },
+  }),
 
-  @computed('fulfillments.@each.{isSubmissible}')
-  isSubmissible(fulfillments) {
+  isSubmissible: computed('fulfillments.@each.{isSubmissible}', function() {
+    const fulfillments = this.get("fulfillments");
     return fulfillments.every(f => f.get("isSubmissible"));
-  }
+  })
 });
