@@ -1,6 +1,6 @@
 import EmberObject from '@ember/object';
 import { module } from 'qunit';
-import { resolve, Promise } from 'rsvp';
+import { Promise } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import {

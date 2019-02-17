@@ -7,8 +7,13 @@ import config from 'watermelon-juice/config/environment';
 export default Service.extend({
   store: service(),
   session: service(),
-  remainingKeys: [],
   allSynced: empty("remainingKeys"),
+
+  init() {
+    this._super(...arguments);
+
+    this.remainingKeys = this.remainingKeys || [];
+  },
 
   start() {
     setInterval(this.processQueue.bind(this), 5000);

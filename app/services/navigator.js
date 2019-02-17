@@ -6,12 +6,14 @@ import { notEmpty } from '@ember/object/computed';
 export default Service.extend({
   routing: service('-routing'),
   router: service(),
-  scrollQueue: [],
-  scrollYMap: {},
   hasRoute: notEmpty('scrollQueue'),
 
   init() {
-    this._super();
+    this._super(...arguments);
+
+    this.scrollQueue = this.scrollQueue || [];
+    this.scrollYMap = this.scrollYMap || {};
+
     this.addListener();
   },
 

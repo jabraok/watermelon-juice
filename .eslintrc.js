@@ -15,6 +15,27 @@ module.exports = {
     browser: true
   },
   rules: {
+    'ember/jquery-ember-run': 0
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "moment": true,
+    "_": true,
+    "-Promise": true,
+    "Immutable": true,
+    "Rx": true,
+    "S": true,
+    "$": true,
+    "google": true,
+    "L": true,
+    "TweenMax": true,
+    "Linear": true,
+    "numeral": true,
+    "SignaturePad": true,
+    "R": true,
+    "localforage": true,
+    "LE": true
   },
   overrides: [
     // node files

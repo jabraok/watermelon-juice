@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { test } from "qunit";
 import moduleForAcceptance from "watermelon-juice/tests/helpers/module-for-acceptance";
 import { authenticateSession } from "watermelon-juice/tests/helpers/ember-simple-auth";
