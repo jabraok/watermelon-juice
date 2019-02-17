@@ -12,6 +12,7 @@ addons:
 cache:
   directories:
     - $HOME/.npm
+    - $HOME/.cache # includes bowers cache
 
 env:
   global:
@@ -20,8 +21,9 @@ env:
 
 before_install:
   - npm config set spin false
-  - npm install -g bower
+  - npm install -g bower phantomjs-prebuilt
   - bower --version
+  - phantomjs --version
 
 install:
   - npm install
