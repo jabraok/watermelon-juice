@@ -6,7 +6,7 @@ export default Route.extend(ApplicationRouteMixin, {
   remoteSync: service('remote-sync'),
 
   activate() {
-    // this.get('remoteSync').start();
+    this.get('remoteSync').start();
   }
 
 });
