@@ -47,20 +47,10 @@ test('shows credit note when there are returns and credit rate is greater than 0
       fulfillment_id:fulfillment.get("id")
     });
 
-  await trackingPage
-    .stockLevels(0)
-    .setStarting(1)
-    .setReturns(1);
-
-  await trackingPage
-    .stockLevels(1)
-    .setStarting(1)
-    .setReturns(1);
-
-  await trackingPage
-    .stockLevels(2)
-    .setStarting(1)
-    .setReturns(1);
+    const stockLevels =  await trackingPage.stockLevels;
+    stockLevels.objectAt(0).setStarting(1).setReturns(1);
+    stockLevels.objectAt(1).setStarting(1).setReturns(1);
+    stockLevels.objectAt(2).setStarting(1).setReturns(1);
 
   await showPage
     .visit({

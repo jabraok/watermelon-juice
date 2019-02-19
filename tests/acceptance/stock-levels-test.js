@@ -46,7 +46,7 @@ test("should only show stock levels for products", async function(assert) {
     fulfillment_id:this.fulfillment.get("id")
   });
 
-  assert.equal(trackingPage.stockLevels().count, 21);
+  assert.equal(trackingPage.stockLevels.length, 21);
 });
 
 test("displays stock levels when present", async function(assert) {
@@ -56,7 +56,7 @@ test("displays stock levels when present", async function(assert) {
     fulfillment_id:this.fulfillment.get("id")
   });
 
-  assert.ok(trackingPage.stockLevels().count > 1);
+  assert.ok(trackingPage.stockLevels.length > 1);
 });
 
 test("navigates back to fulfillment", async function(assert) {

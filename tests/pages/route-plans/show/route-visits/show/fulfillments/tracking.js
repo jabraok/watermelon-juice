@@ -12,12 +12,8 @@ export default PO.create({
 
   markTracked: clickable(".markTracked"),
 
-  stockLevels: collection({
-    itemScope: '.debug_ui_item-tracker',
-
-    item: {
-      setStarting: fillable(".startingInput"),
-      setReturns: fillable(".returnsInput")
-    }
+  stockLevels: collection('.debug_ui_item-tracker', {
+    setStarting: fillable(".startingInput"),
+    setReturns: fillable(".returnsInput")
   })
 });

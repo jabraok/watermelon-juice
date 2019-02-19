@@ -27,7 +27,7 @@ test("can view list of fulfillments", async function(assert) {
 
   await showPage.visit({route_plan_id:routePlan.get("id"), route_visit_id:routeVisit.get("id")});
 
-  assert.equal(showPage.fulfillments().count, 3);
+  assert.equal(showPage.fulfillments.length, 3);
 });
 
 test("can select a fulfillment", async function(assert) {
@@ -40,7 +40,7 @@ test("can select a fulfillment", async function(assert) {
 
   await showPage
     .visit({route_plan_id:routePlan.get("id"), route_visit_id:routeVisit.get("id")})
-    .fulfillments(0)
+    .fulfillments.objectAt(0)
     .click();
 
   const urlToMatch = `/route-plans/${routePlan.get("id")}/route-visits/${routeVisit.get("id")}/fulfillments/${fulfillment.get("id")}`;

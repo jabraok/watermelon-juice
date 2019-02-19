@@ -3,11 +3,7 @@ import { module } from 'qunit';
 import { Promise } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
-import {
-  mockSetup,
-  mockTeardown,
-  mockFindAll
-} from 'ember-data-factory-guy';
+import { mockFindAll } from 'ember-data-factory-guy';
 
 const MockRemoteSync = EmberObject.extend({
   start(){},
@@ -19,8 +15,6 @@ export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
-
-      mockSetup();
 
       this.application.register('service:test-remote-sync', MockRemoteSync);
       this.application.inject('route', 'remoteSync', 'service:test-remote-sync');
@@ -37,8 +31,7 @@ export default function(name, options = {}) {
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
       return Promise.resolve(afterEach)
-        .then(() => destroyApp(this.application))
-        .then(() => mockTeardown());
+        .then(() => destroyApp(this.application));
     }
   });
 }

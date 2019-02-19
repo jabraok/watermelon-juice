@@ -27,7 +27,7 @@ test("can view recent route plans", async function(assert) {
 
   await indexPage.visit();
 
-  assert.equal(indexPage.routePlans().count, 3);
+  assert.equal(indexPage.routePlans.length, 3);
 });
 
 test("can select a route plan", async function(assert) {
@@ -38,7 +38,7 @@ test("can select a route plan", async function(assert) {
 
   await indexPage
     .visit()
-    .routePlans(0)
+    .routePlans.objectAt(0)
     .click();
 
   assert.equal(currentURL(), "/route-plans/1");
@@ -51,7 +51,7 @@ test("can view a route plans route visits", async function(assert) {
 
   await showPage.visit({route_plan_id:routePlan.get("id")});
 
-  assert.equal(showPage.routeVisits().count, 3);
+  assert.equal(showPage.routeVisits.length, 3);
 });
 
 test("when clicking a route visit with a single fulfillment, should navigate to route visit dashboard", async function(assert) {
@@ -65,7 +65,7 @@ test("when clicking a route visit with a single fulfillment, should navigate to 
 
   await showPage.visit({route_plan_id:routePlan.get("id")})
 
-  await showPage.routeVisits(0).click();
+  await showPage.routeVisits.objectAt(0).click();
 
   const urlToMatch = `/route-plans/${routePlan.get("id")}/route-visits/${routeVisit.get("id")}/fulfillments/${fulfillment.get("id")}`;
   assert.equal(currentURL(), urlToMatch);
@@ -81,7 +81,7 @@ test("when clicking a route visit with a multiple fulfillments, should navigate 
 
   await showPage.visit({route_plan_id:routePlan.get("id")});
 
-  await showPage.routeVisits(0).click();
+  await showPage.routeVisits.objectAt(0).click();
 
   const urlToMatch = `/route-plans/${routePlan.get("id")}/route-visits/${routeVisit.get("id")}`;
   assert.equal(currentURL(), urlToMatch);

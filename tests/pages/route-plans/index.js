@@ -5,11 +5,7 @@ const { visitable, clickable, collection } = PO;
 export default PO.create({
   visit: visitable('/route-plans'),
 
-  routePlans: collection({
-    itemScope: '.debug_rows_route-plan-list-row',
-
-    item: {
-      click: clickable()
-    }
+  routePlans: collection('.debug_rows_route-plan-list-row', {
+    click: clickable()
   })
 });
