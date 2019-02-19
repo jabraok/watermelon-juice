@@ -5,20 +5,20 @@
   icon="info"
   label="Location Notes"
   completed=false
-  onClick=(route-action "notes")}}
+  onClick=(action "notes")}}
 {{#if model.belongsToSalesOrder}}
   {{ui/drilldown-button
     icon="assignment_turned_in"
     label="Track Inventory"
     class="trackInventory"
     completed=trackingCompleted
-    onClick=(route-action "track")}}
+    onClick=(action "track")}}
 {{/if}}
 {{ui/drilldown-button
   icon="touch_app"
   label="Review & Sign"
   completed=model.pod.isValid
-  onClick=(route-action "review")}}
+  onClick=(action "review")}}
 <div class="row center">
   <div class="card-1">
     {{ui/icon-button
@@ -29,6 +29,6 @@
       color=white
       backgroundColor=colors.DARK_GREY
       disabled=(not model.isSubmissible)
-      onClick=(route-action "submit" model)}}
+      onClick=(action "submit" model)}}
   </div>
 </div>

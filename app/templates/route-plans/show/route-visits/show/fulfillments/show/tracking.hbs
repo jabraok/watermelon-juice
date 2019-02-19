@@ -1,11 +1,8 @@
 {{#ember-wormhole to="navHeaderContainer"}}
   {{headers/fulfillment-info model=model}}
 {{/ember-wormhole}}
-
 {{lists/stock-levels model=model.stock.desiredItemStockLevels title="Main products"}}
-
 {{lists/stock-levels model=model.stock.extraItemStockLevels title="Other products"}}
-
 <div class="row center">
   <div class="card-1">
     {{ui/icon-button
@@ -15,6 +12,6 @@
       size="2"
       color=white
       backgroundColor=colors.DARK_GREY
-      onClick=(route-action "markAllCompleted")}}
+      onClick=(action "markAllCompleted")}}
   </div>
 </div>

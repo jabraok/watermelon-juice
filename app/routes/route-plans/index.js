@@ -22,13 +22,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
 
   actions: {
-    selectRoutePlan(routePlan) {
-      this.transitionTo("route-plans.show", routePlan.get("id"));
-    },
-
     didTransition() {
       this.navigator.clearRoute();
     }
   }
-
 });

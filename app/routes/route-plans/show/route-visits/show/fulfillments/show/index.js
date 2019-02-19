@@ -1,13 +1,10 @@
 import { isPresent, isNone } from '@ember/utils';
-import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
 import { get } from '@ember/object';
 import { run } from '@ember/runloop';
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  remoteSync: service(),
-
   async model() {
     const fulfillment = this.modelFor('route-plans.show.route-visits.show.fulfillments.show');
     await this.syncDependencies(fulfillment);
@@ -37,37 +34,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
   },
 
   actions: {
-    track() {
-      this.transitionTo("route-plans.show.route-visits.show.fulfillments.show.tracking");
-    },
-
-    review() {
-      this.transitionTo("route-plans.show.route-visits.show.fulfillments.show.review");
-    },
-
-    notes() {
-      this.transitionTo("route-plans.show.route-visits.show.fulfillments.show.notes");
-    },
-
-    async submit(fulfillment) {
-      const routeVisit = await fulfillment.get("routeVisit");
-
-      fulfillment.set("deliveryState", "fulfilled");
-
-      if(routeVisit.get("hasMultipleFulfillments")) {
-        this.transitionTo("route-plans.show.route-visits.show");
-      } else {
-        routeVisit.set("routeVisitState", "fulfilled");
-        routeVisit.set("completedAt", moment().toDate());
-
-        run(() => {
-          this.get("remoteSync").enqueue(routeVisit);
-        });
-
-        this.transitionTo("route-plans.show");
-      }
-    },
-
     didTransition() {
       const model = this.modelFor("route-plans.show.route-visits.show.fulfillments.show");
       if(model.get("routeVisit.hasMultipleFulfillments")) {
